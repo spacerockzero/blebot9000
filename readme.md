@@ -2,6 +2,8 @@ working on getting johnny-five working with the ble bot 9000
 
 https://www.hackster.io/29284/ble-bot-9000-c150b8
 
+`node init.js` to execute
+
 
 on windows:
 	install visual studio community edition with C++ addon
