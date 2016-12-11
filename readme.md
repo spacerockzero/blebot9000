@@ -1,4 +1,4 @@
-working on getting johnny-five working with the ble bot 9000
+video in action: https://youtu.be/A1P5zveYVzo
 
 https://www.hackster.io/29284/ble-bot-9000-c150b8
 
