@@ -11,7 +11,7 @@ const DEVICE_NAME = 'FIRMATA';
 const ADDRESS = null;
 
 const five = require('johnny-five');
-const BleSerialPort = require('ble-serialport').SerialPort;
+const BLESerialPort = require('ble-serial').SerialPort;
 const keypress = require('keypress');
 
 function ready() {
@@ -28,6 +28,7 @@ function ready() {
 
 class Bot {
   motor;
+  speed;
   constructor() {
     const configs = five.Motor.SHIELD_CONFIGS.ADAFRUIT_V2;
     this.motor = [];
@@ -35,31 +36,33 @@ class Bot {
     this.motor.push(new five.Motor(configs.M2));
     this.motor.push(new five.Motor(configs.M3));
     this.motor.push(new five.Motor(configs.M4));
+    this.speed = 100;
   }
-  forward(speed: number) {
-    this.motor[0].reverse(speed);
-    this.motor[1].forward(speed);
-    this.motor[2].forward(speed);
-    this.motor[3].reverse(speed);
+  forward() {
+    this.motor[0].reverse(this.speed);
+    this.motor[1].forward(this.speed);
+    this.motor[2].forward(this.speed);
+    this.motor[3].reverse(this.speed);
   }
   reverse(speed: number) {
-    this.motor[0].forward(speed);
-    this.motor[1].reverse(speed);
-    this.motor[2].reverse(speed);
-    this.motor[3].forward(speed);
+    this.motor[0].forward(this.speed);
+    this.motor[1].reverse(this.speed);
+    this.motor[2].reverse(this.speed);
+    this.motor[3].forward(this.speed);
   }
   left(speed: number) {
-    this.motor[0].forward(speed);
-    this.motor[1].forward(speed);
-    this.motor[2].forward(speed);
-    this.motor[3].forward(speed);
+    this.motor[0].forward(this.speed);
+    this.motor[1].forward(this.speed);
+    this.motor[2].forward(this.speed);
+    this.motor[3].forward(this.speed);
   }
   right(speed: number) {
-    this.motor[0].reverse(speed);
-    this.motor[1].reverse(speed);
-    this.motor[2].reverse(speed);
-    this.motor[3].reverse(speed);
+    this.motor[0].reverse(this.speed);
+    this.motor[1].reverse(this.speed);
+    this.motor[2].reverse(this.speed);
+    this.motor[3].reverse(this.speed);
   }
+
   stop() {
     this.motor[0].stop();
     this.motor[1].stop();
@@ -78,22 +81,22 @@ class Bot {
     }
 
     if (key.name == 'w') {
-      this.forward(255);
+      this.forward();
       console.log('forward command');
     }
 
     if (key.name == 's') {
-      this.reverse(255);
+      this.reverse();
       console.log('reverse command');
     }
 
     if (key.name == 'a') {
-      this.left(255);
+      this.left();
       console.log('left command');
     }
 
     if (key.name == 'd') {
-      this.right(255);
+      this.right();
       console.log('right command');
     }
 
@@ -101,24 +104,30 @@ class Bot {
       this.stop();
       console.log('stop');
     }
+    if (key.name == 'f') {
+      this.speed -= 10;
+      if (this.speed < 10) {
+        this.speed = 10;
+      }
+      console.log('speed set to',this.speed);
+    }
+    if (key.name == 'r') {
+      this.speed += 10;
+      if (this.speed > 255) {
+        this.speed = 255;
+      }
+      console.log('speed set to',this.speed);
+    }
   }
 }
 
 async function init() {
 
-  console.log('make sure you arent already paired and connected!');
+  console.log('connecting to',DEVICE_NAME);
+  const ble = new BLESerialPort({
+    localName: DEVICE_NAME
+  });
 
-  let ble;
-  if (ADDRESS) {
-    console.log('connecting to',DEVICE_NAME,'|',ADDRESS);
-    ble = new BleSerialPort({name:DEVICE_NAME,address:ADDRESS});
-  } else {
-    console.log('connecting to',DEVICE_NAME);
-    ble = new BleSerialPort({name:DEVICE_NAME});
-  }
-
-  await ble.connect();
-  console.log('connected to firmata');
   let board = new five.Board({port:ble,repl:false});
   console.log('waiting for ready');
   board.on('ready',ready);
