@@ -61,12 +61,12 @@ class WebServer {
 						bot.stop();
 						break;
 				}
-
+				res.send();
 			})
 			this.app.use(express.static('public'));
 
 			this.app.listen(3000, function () {
 			  console.log('website listening on port 3000!')
-			})
+			});
 	}
 }
