@@ -26,7 +26,7 @@ function ready() {
   process.stdin.on('keypress',(ch,key) => blebot.input(ch,key));
 }
 
-class Bot {
+export class Bot {
   motor;
   speed;
   constructor() {
@@ -39,24 +39,25 @@ class Bot {
     this.speed = 100;
   }
   forward() {
+		console.log('forward',this.speed)
     this.motor[0].reverse(this.speed);
     this.motor[1].forward(this.speed);
     this.motor[2].forward(this.speed);
     this.motor[3].reverse(this.speed);
   }
-  reverse(speed: number) {
+  reverse() {
     this.motor[0].forward(this.speed);
     this.motor[1].reverse(this.speed);
     this.motor[2].reverse(this.speed);
     this.motor[3].forward(this.speed);
   }
-  left(speed: number) {
+  left() {
     this.motor[0].forward(this.speed);
     this.motor[1].forward(this.speed);
     this.motor[2].forward(this.speed);
     this.motor[3].forward(this.speed);
   }
-  right(speed: number) {
+  right() {
     this.motor[0].reverse(this.speed);
     this.motor[1].reverse(this.speed);
     this.motor[2].reverse(this.speed);
@@ -121,7 +122,7 @@ class Bot {
   }
 }
 
-async function init() {
+export async function init() {
 
   console.log('connecting to',DEVICE_NAME);
   const ble = new BLESerialPort({
@@ -132,7 +133,3 @@ async function init() {
   console.log('waiting for ready');
   board.on('ready',ready);
 }
-
-init().catch((err) => {
-  console.error(err);
-});

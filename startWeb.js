@@ -6,4 +6,6 @@
 require("babel-register");
 require("babel-polyfill");
 
-require('./main.js');
+require('./web.js').init().catch((err) => {
+  console.error(err);
+});

@@ -52,3 +52,8 @@ https://github.com/sandeepmistry/noble
 	xcodebuild is required, and automatically installed by npm
 
 	i don't have a mac to work on so i have no idea what is involved.
+
+
+## arduino stuff
+	install intel curie board
+	install adafruit motorshield v2
