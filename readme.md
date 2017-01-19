@@ -73,6 +73,7 @@ i have not managed to get it working on my windows 10 desktop (crazy usb error w
  - flash firmata BLE sketch
 
 ## TODO
+ - add web interface screenshot to readme
  - add support for gamepads on the web version
  - properly flowtype all code (some newer stuff was hastily patched together at the hacker event)
  - get it working on the PiGrrl 2
