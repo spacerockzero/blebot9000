@@ -9,18 +9,18 @@ https://www.hackster.io/29284/ble-bot-9000-c150b8
 1. `npm start` to execute
 
 to start the command line version: `node startConsole.js`
-  `w` for forward
-  `d` for reverse
-  `a` to rotate left
-  `d` to rotate right
-  `r` to increase speed for the next command
-  `f` to decrease speed for the next command
-  `q` to stop
+ - `w` for forward
+ - `d` for reverse
+ - `a` to rotate left
+ - `d` to rotate right
+ - `r` to increase speed for the next command
+ - `f` to decrease speed for the next command
+ - `q` to stop
 
 to start the http version: `node startWeb.js`
-  browse to http://localhost:3000
-  slider controls speed immediately
-  directional buttons similar to the console version
+ - browse to http://localhost:3000
+ - slider controls speed immediately
+ - directional buttons similar to the console version
 
 main points:
 
@@ -51,30 +51,28 @@ https://github.com/sandeepmistry/noble
 
 
 # Windows
-	i have not managed to get it working on my windows desktop (crazy usb error), but here are a few steps to get close:
+i have not managed to get it working on my windows 10 desktop (crazy usb error with bluetooth-hci-socket), however it works on my laptop with windows 10.
 
-		install visual studio community edition with C++ addon
-		install node gyp `npm install -g node-gyp`
+ - install visual studio community edition with C++ addon
+ - install node gyp `npm install -g node-gyp`
 
-		fancy junk might be needed to make it work
-		https://github.com/sandeepmistry/node-bluetooth-hci-socket
+ - if there are issues installing bluetooth-hci-socket, refer to the project's readme:
+ - https://github.com/sandeepmistry/node-bluetooth-hci-socket
 
-		it seems highly dependent on if you can get noble to work with your bluetooth adapter.
+ - making the control script work mainly depends on if you can get noble to work with your bluetooth adapter.
 
 
 ## OS X
-	xcodebuild is required, and automatically installed by npm
-
-	i don't have a mac to work on so i have no idea what is involved.
-
+ - xcodebuild is required, and automatically installed by npm
+ - i didn't have a mac at the time to test on, however i could work on proper OS X instructions if needed
 
 ## arduino stuff
-	install intel curie board support
-	install adafruit motorshield v2 library
-	// there are a few more required libraries, but i forgot what they were. please amend this readme!
-	flash firmata BLE sketch
+ - install intel curie board support
+ - install adafruit motorshield v2 library
+ - // there are a few more required libraries, but i forgot what they were. please amend this readme!
+ - flash firmata BLE sketch
 
 ## TODO
-	add support for gamepads on the web version
-	properly flowtype all code (some newer stuff was hastily patched together at the hacker event)
-	get it working on the PiGrrl 2
+ - add support for gamepads on the web version
+ - properly flowtype all code (some newer stuff was hastily patched together at the hacker event)
+ - get it working on the PiGrrl 2
