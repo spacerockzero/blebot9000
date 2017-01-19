@@ -2,11 +2,25 @@ video in action: https://youtu.be/A1P5zveYVzo
 
 https://www.hackster.io/29284/ble-bot-9000-c150b8
 
-1. follow directions below for 'running control script', mainly
- 1. give node permissions for bluetooth
- 1. install dependencies for noble (bluetooth dependency)
+1. follow directions below for 'running control script'
+ 1. make sure to give node permissions for bluetooth
+ 1. install dependencies for noble (bluetooth nodejs dependency)
 1. `npm install` to prepare
 1. `npm start` to execute
+
+to start the command line version: `node startConsole.js`
+  `w` for forward
+  `d` for reverse
+  `a` to rotate left
+  `d` to rotate right
+  `r` to increase speed for the next command
+  `f` to decrease speed for the next command
+  `q` to stop
+
+to start the http version: `node startWeb.js`
+  browse to http://localhost:3000
+  slider controls speed immediately
+  directional buttons similar to the console version
 
 main points:
 
@@ -55,5 +69,12 @@ https://github.com/sandeepmistry/noble
 
 
 ## arduino stuff
-	install intel curie board
-	install adafruit motorshield v2
+	install intel curie board support
+	install adafruit motorshield v2 library
+	// there are a few more required libraries, but i forgot what they were. please amend this readme!
+	flash firmata BLE sketch
+
+## TODO
+	add support for gamepads on the web version
+	properly flowtype all code (some newer stuff was hastily patched together at the hacker event)
+	get it working on the PiGrrl 2

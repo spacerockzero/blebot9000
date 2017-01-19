@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node init.js"
+    "start": "node startConsole.js"
   },
   "author": "",
   "license": "ISC",
