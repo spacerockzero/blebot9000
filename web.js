@@ -18,7 +18,7 @@ export async function init() {
     localName: DEVICE_NAME
   });
 
-  let board = new five.Board({port:ble,repl:false});
+  let board = new five.Board();
   console.log('waiting for ready');
   board.on('ready',() => {
 

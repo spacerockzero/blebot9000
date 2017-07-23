@@ -40,27 +40,27 @@ export class Bot {
   }
   forward() {
 		console.log('forward',this.speed)
-    this.motor[0].reverse(this.speed);
-    this.motor[1].forward(this.speed);
-    this.motor[2].forward(this.speed);
-    this.motor[3].reverse(this.speed);
+    this.motor[0].forward(this.speed); // front left
+    this.motor[1].forward(this.speed); // front right
+    this.motor[2].forward(this.speed); // back left
+    this.motor[3].forward(this.speed); // back right
   }
   reverse() {
-    this.motor[0].forward(this.speed);
+    this.motor[0].reverse(this.speed);
     this.motor[1].reverse(this.speed);
     this.motor[2].reverse(this.speed);
-    this.motor[3].forward(this.speed);
+    this.motor[3].reverse(this.speed);
   }
   left() {
-    this.motor[0].forward(this.speed);
+    this.motor[0].reverse(this.speed);
     this.motor[1].forward(this.speed);
-    this.motor[2].forward(this.speed);
+    this.motor[2].reverse(this.speed);
     this.motor[3].forward(this.speed);
   }
   right() {
-    this.motor[0].reverse(this.speed);
+    this.motor[0].forward(this.speed);
     this.motor[1].reverse(this.speed);
-    this.motor[2].reverse(this.speed);
+    this.motor[2].forward(this.speed);
     this.motor[3].reverse(this.speed);
   }
 
@@ -129,7 +129,7 @@ export async function init() {
     localName: DEVICE_NAME
   });
 
-  let board = new five.Board({port:ble,repl:false});
+  let board = new five.Board();
   console.log('waiting for ready');
   board.on('ready',ready);
 }
