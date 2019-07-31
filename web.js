@@ -63,6 +63,14 @@ class WebServer {
 				}
 				res.send();
 			})
+			this.app.get('/right', (req,res)=>{
+				bot.right();
+				res.send('turning right')
+			})
+			this.app.get('/stop', (req,res)=>{
+				bot.stop();
+				res.send('stopping')
+			})
 			this.app.use(express.static('public'));
 
 			this.app.listen(3000, function () {

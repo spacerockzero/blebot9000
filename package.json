@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node startConsole.js"
+    "start": "node startConsole.js",
+    "web": "node startWeb.js"
   },
   "author": "",
   "license": "ISC",
